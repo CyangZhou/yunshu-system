@@ -1,0 +1,85 @@
+{
+  "schema": "yunshu.skill.actions.contracts.v2",
+  "actions": {
+    "run": {
+      "input": {
+        "required": ["goal"],
+        "properties": ["goal", "workspace", "artifact_root", "research_urls", "execute_command", "enable_execute", "approve_execute"]
+      },
+      "output": {
+        "properties": ["ok", "status", "summary_path", "gaps_path", "checkpoint_path", "artifacts_path", "research_manifest_path"]
+      }
+    },
+    "resume": {
+      "input": {
+        "required": [],
+        "properties": ["artifact_root", "checkpoint", "session_id", "context_checkpoint_id"]
+      },
+      "output": {
+        "properties": ["ok", "status", "checkpoint_path"]
+      }
+    },
+    "research": {
+      "input": {
+        "required": ["urls"],
+        "properties": ["artifact_root", "urls"]
+      },
+      "output": {
+        "properties": ["schema", "policy_version", "items"]
+      }
+    },
+    "regress": {
+      "input": {
+        "required": [],
+        "properties": ["cases", "artifact_root", "report_out"]
+      },
+      "output": {
+        "properties": ["report_path", "success_rate"]
+      }
+    },
+    "compare_reports": {
+      "input": {
+        "required": ["baseline", "candidate"],
+        "properties": ["baseline", "candidate", "report_out", "json"]
+      },
+      "output": {
+        "properties": ["summary", "aggregate_delta"]
+      }
+    },
+    "read_artifact": {
+      "input": {
+        "required": [],
+        "properties": ["artifact_root", "path", "latest_phase0_report", "latest_context", "checkpoint_id", "session_id", "max_chars", "include_full", "context_bundle"]
+      },
+      "output": {
+        "properties": ["ok", "path", "summary"]
+      }
+    },
+    "list_context": {
+      "input": {
+        "required": [],
+        "properties": ["artifact_root", "session_id", "limit"]
+      },
+      "output": {
+        "properties": ["items"]
+      }
+    },
+    "module_index": {
+      "input": {"required": [], "properties": []},
+      "output": {"properties": ["ok", "modules"]}
+    },
+    "source_module_index": {
+      "input": {"required": [], "properties": []},
+      "output": {"properties": ["ok", "source_modules"]}
+    },
+    "contract": {
+      "input": {
+        "required": [],
+        "properties": ["action"]
+      },
+      "output": {
+        "properties": ["ok", "actions", "action", "contract"]
+      }
+    }
+  }
+}
